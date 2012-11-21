@@ -1,0 +1,57 @@
+Components of Rails:
+- Acion Pack
+  - Action Controller
+  - Action Dispatch
+  - Action View
+- Action Mailer
+- Active Model
+- Active Record
+- Active Resource
+- Active Support
+- Railties
+
+Action Controller
+- manages controllers in Rails app
+- processes icoming request to application
+- extracts params
+- dispatches them to intended action
+- session managment, template rendering, redirection
+
+Action View
+- manages views of Rails app
+- manages templates rendering, ajax sport
+
+Action Dispacth
+- routing of web requests
+
+Action Mailer
+- email processing
+
+Active Model
+- interface between Action Pack and Active Record ORM
+- allows to utilize other ORM framework than Active Record
+
+Active Record
+- base for models in Rails application
+- database independence, CRUD, fining
+
+Active Resource
+- framework for managing connection between objects and RESTful web services
+
+Active Supoort
+- collection of utillity classes
+
+Railties
+- glues various framewroks together
+
+Rails folder hierarchy
+  app/ controllers, models and views
+  config/ routes, database
+  db/ current schema and migrations
+  lib/ extended modules for your application
+  log/ application log files
+  public/ static files
+  rakefile add tasks to lib/tasks
+  script/ scripts for start,deploy
+  test/ unit test...
+
