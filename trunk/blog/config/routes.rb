@@ -1,9 +1,9 @@
 Blog::Application.routes.draw do
+
   root :to => "posts#index"
   resources :posts
 
   # match "post/:id" => "post#show", :as => "show_post", :constraints => proc {|req| req.params[:id] =~ /\d+/}
-
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

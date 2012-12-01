@@ -1,7 +1,7 @@
 Rails works with three modes of operation:
-- development
-- test
-- production
+1) development
+2) test
+3) production
 Here you set, on which database to connect, reload on each request, use caching...
 These setting can be found in environments folder
 
@@ -13,4 +13,25 @@ Bundler
 - gems can be added from :git => , and filesystem :path =>
 - after every change to Gemfile >>bundle install<< should be run
 
+Boot.rb, Application.rb and Environment.rb
+1) boot.rb sets up bundler and load paths
+2) application.rb loads:
+   - rails gems
+   - gems for current environemt
+   - configuration
+   You can add other classes to the load path except Models, Controllers etc
+   You can set timezone, observers, localization
+   Specific intialaziations can have their specific files in config/initializers like:
+    - backrtace silencers - remove backtraces that don't matter to you (Hbase)
+    - cookie initilaztion key
+    - inflections - specific types for pluralization for example our words
+    - custom mime types - response for specific mime types e.g jar
+    - session store - cookey, memcached ....
+    - log levels
+3) environment.rb initializer
 
+Logging
+Rails.looger holds reference to a logger conforming to the interface of Log4r
+Log folder is where log files dependad of your environment are stored
+tail -f log/development.log
+Rails::Subscriber.colorize_logging weather to colorize statements or not
