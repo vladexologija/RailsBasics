@@ -1,11 +1,18 @@
 class Post
-  attr_accessor :id
+  extend ActiveModel::Naming
+  include ActiveModel::Conversion
 
-  def initialize(id)
-    @id = id
+  attr_accessor :id, :title, :description, :date
+
+  def initialize
   end
 
   def to_param
     "ovo je proba".parameterize
   end
+
+  def persisted?
+    false
+  end
+
 end
