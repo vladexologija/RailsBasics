@@ -4,7 +4,10 @@ class Post
 
   attr_accessor :id, :title, :description, :date
 
-  def initialize
+  def initialize(params = nil)
+    if params
+      @id = params[:id]
+    end
   end
 
   def to_param
