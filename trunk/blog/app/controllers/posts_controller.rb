@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_filter :params_check
 
   def index
+    @posts = Post.all
   end
 
   def show
@@ -13,7 +14,8 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new({:id => "12345"})
+    post = Post.new(params[:post])
+    post.save
     # redirect_to :action => "index"
     # puts "URL FOR: #{url_for(post)}"
     # redirect_to post

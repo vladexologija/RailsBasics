@@ -1,21 +1,9 @@
-class Post
-  extend ActiveModel::Naming
-  include ActiveModel::Conversion
+class Post < ActiveRecord::Base
+  attr_accessible :date, :description, :title
 
-  attr_accessor :id, :title, :description, :date
-
-  def initialize(params = nil)
-    if params
-      @id = params[:id]
-    end
-  end
-
+  # set_table_name to use different table name than default - plural of model
   def to_param
     "ovo je proba".parameterize
-  end
-
-  def persisted?
-    false
   end
 
 end
