@@ -38,3 +38,6 @@ gem 'pg'
 
 # To use debugger
 # gem 'debugger'
+
+gem 'rspec'
+gem 'rspec-rails'

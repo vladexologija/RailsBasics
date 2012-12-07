@@ -15,11 +15,16 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(params[:post])
-    post.save
+    puts post.new_record?
+    if post.save
     # redirect_to :action => "index"
     # puts "URL FOR: #{url_for(post)}"
     # redirect_to post
-    redirect_to posts_path
+      puts post.persisted?
+      redirect_to posts_path
+    else
+      redirect_to :new
+    end
   end
 
   private
