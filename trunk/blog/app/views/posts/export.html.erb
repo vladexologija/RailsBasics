@@ -1,0 +1,4 @@
+<%= @count %>
+<% @posts.each do |post| %>
+  <div><%="#{post.title} #{post.created_at}" %></div>
+<% end %>

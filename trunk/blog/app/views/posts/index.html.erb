@@ -1,4 +1,7 @@
 <% @posts.each do |post| %>
   <div><%= post.title %></div>
+  <div><%= post.id %></div>
+  <div><%= link_to "Edit", edit_post_path(post) %></div>
+  <div><%= link_to "Delete", post_path(post), method: :delete %></div>
 <% end %>
 <%= link_to "New post", new_post_path %>
