@@ -4,6 +4,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     # puts @posts.first.attributes
+    # @posts = Post.where(:id => [1,2], :title => "Title")
+    # @posts = Post.where("submited = ?", true)
   end
 
   def show
@@ -26,6 +28,8 @@ class PostsController < ApplicationController
 
   def create
     post = Post.new(params[:post])
+    # post.persisted?
+    # post.new_record?
     puts post.new_record?
     if post.save
     # redirect_to :action => "index"
@@ -41,7 +45,7 @@ class PostsController < ApplicationController
   def update
     #Post.update(params[:id],params[:post])
     post = Post.find(params[:id])
-    if post.update_attributes(params[:post])
+    if (post.exists? && post.update_attributes(params[:post]))
       redirect_to post_path(post)
     else
       render :edit
