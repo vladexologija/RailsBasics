@@ -5,15 +5,9 @@ class TestFeatures < ActiveRecord::Migration
       t.column :text, :string
       t.column :account, :string
       # adds created_at and updated_at columns (maintained by ActiveRecord)
-      t.timestamp
+      t.timestamps
     end
 
-    change_table :comments do |t|
-      t.change :text, :text
-      t.column :username, :string
-      t.column :title, :string
-      t.remove :account
-    end
   end
 
   def down

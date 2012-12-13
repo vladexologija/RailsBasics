@@ -1,6 +1,10 @@
 class Post < ActiveRecord::Base
+  belongs_to :user
+  has_many :comments
+
   attr_accessible :date, :description, :title
-  before_validation :check_description
+
+  # before_validation :check_description
   # attr_readonly :social_security_number
 
   def description
@@ -13,8 +17,8 @@ class Post < ActiveRecord::Base
   #end
 
   # remove sware words before typecasting
-  def check_description
-    self[:description] = description_before_type_cast.gsub(/fuck/i,"*")
-  end
+  # def check_description
+  #  self[:description] = description_before_type_cast.gsub(/fuck/i,"*")
+  # end
 
 end

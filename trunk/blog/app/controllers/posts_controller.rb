@@ -31,6 +31,7 @@ class PostsController < ApplicationController
     # post.persisted?
     # post.new_record?
     puts post.new_record?
+    # post.save! raises exception
     if post.save
     # redirect_to :action => "index"
     # puts "URL FOR: #{url_for(post)}"

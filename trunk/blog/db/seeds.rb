@@ -3,5 +3,4 @@
 #
 # Examples:
 #
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.create!(:username => "admin", :password => "admin", :repeat_passwod => "admin", :preferences => {})
