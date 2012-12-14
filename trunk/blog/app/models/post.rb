@@ -4,11 +4,24 @@ class Post < ActiveRecord::Base
 
   attr_accessible :date, :description, :title
 
+  before_save :check_date
+
+  scope :empty, where(:date => nil)
+  scope :older_than, lambda { |date| where("created_at > ?", date)}
+  scope :interesting, lambda {
+    joins(:comments).where("comments.text IS NOT NULL")
+  }
+
+  # default_scope :not_empty, where(:date => !nil)
   # before_validation :check_description
   # attr_readonly :social_security_number
 
   def description
     read_attribute(:description) || "n/a"
+  end
+
+  def check_date
+    self.date ||= Date.today
   end
 
   # set_table_name to use different table name than default - plural of model

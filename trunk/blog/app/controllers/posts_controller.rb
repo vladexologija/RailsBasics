@@ -2,10 +2,11 @@ class PostsController < ApplicationController
   before_filter :params_check
 
   def index
-    @posts = Post.all
+    # @posts = Post.all
     # puts @posts.first.attributes
     # @posts = Post.where(:id => [1,2], :title => "Title")
     # @posts = Post.where("submited = ?", true)
+    @posts = Post.older_than(Date.today).empty
   end
 
   def show

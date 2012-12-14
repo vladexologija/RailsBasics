@@ -18,4 +18,11 @@ class User < ActiveRecord::Base
   validates_length_of :password, :minimum => 5
   validates_uniqueness_of :username
 
+  before_destroy :prevent_destroy
+
+  def prevent_destroy
+    update_attribute(:updated_at, Time.now)
+    false
+  end
+
 end
