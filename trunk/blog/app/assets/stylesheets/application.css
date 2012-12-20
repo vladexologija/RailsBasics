@@ -11,3 +11,8 @@
  *= require_self
  *= require_tree .
  */
+ .basic {
+    background: #000000;
+    height: 50px;
+    color:#FFFFFF;
+ }

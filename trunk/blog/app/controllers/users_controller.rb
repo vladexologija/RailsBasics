@@ -38,6 +38,15 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def edit_all
+     @user = User.new
+  end
+
+  def update_all
+    User.update!(params[:user].keys, params[:user].values)
+    redirect_to users_path
+  end
+
   # POST /users
   # POST /users.json
   def create

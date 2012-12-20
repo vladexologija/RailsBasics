@@ -1,11 +1,14 @@
 class User < ActiveRecord::Base
   has_many :posts
+  accepts_nested_attributes_for :posts
+
   attr_accessible  :username,
                    :password,
                    :password_confirmation,
                    :preferences,
                    :role,
-                   :terms_of_service
+                   :terms_of_service,
+                   :posts_attributes
 
   attr_accessor :role
 

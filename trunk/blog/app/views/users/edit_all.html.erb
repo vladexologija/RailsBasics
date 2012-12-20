@@ -1,0 +1,19 @@
+<h1>Editing user</h1>
+<% people = User.all %>
+
+<%= form_for "user[]", :url => update_all_users_path, :method => :put do |f| %>
+  <% for @user in people %>
+    <%= f.label :username , "Username" %>
+    <%= f.text_field :username %><br/>
+
+    <%= f.label :password, "Password" %>
+    <%= f.password_field :password %> <br/>
+
+    <%= select_date %> <br/>
+  <% end %>
+
+  <%= f.submit "Save users" %>  <br/> <br/>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>

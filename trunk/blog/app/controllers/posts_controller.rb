@@ -2,11 +2,12 @@ class PostsController < ApplicationController
   before_filter :params_check
 
   def index
-    # @posts = Post.all
+    @posts = Post.all
     # puts @posts.first.attributes
     # @posts = Post.where(:id => [1,2], :title => "Title")
     # @posts = Post.where("submited = ?", true)
-    @posts = Post.older_than(Date.today).empty
+    # @posts = Post.older_than(Date.today).empty
+
   end
 
   def show
@@ -28,16 +29,16 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(params[:post])
+    @post = Post.new(params[:post])
     # post.persisted?
     # post.new_record?
-    puts post.new_record?
+    puts @post.new_record?
     # post.save! raises exception
-    if post.save
+    if @post.save
     # redirect_to :action => "index"
     # puts "URL FOR: #{url_for(post)}"
     # redirect_to post
-      puts post.persisted?
+      puts @post.persisted?
       redirect_to posts_path
     else
       render :new

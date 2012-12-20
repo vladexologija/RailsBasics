@@ -35,4 +35,5 @@ Blog::Application.configure do
   config.assets.debug = true
 
   # config.middleware.use ResponseTimer, "Load time"
+  config.log_level = :debug
 end

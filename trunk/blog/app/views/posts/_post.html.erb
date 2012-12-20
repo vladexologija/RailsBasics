@@ -1,0 +1,9 @@
+<div class="post">
+  <% if local_assigns.has_key? :post %>
+    <div><%= post.title %></div>
+    <div><%= post.id %></div>
+    <% logger.info("Rendering #{post_counter}:#{post.title}") %>
+    <div><%= link_to "Edit", edit_post_path(post) %></div>
+    <div><%= link_to "Delete", post_path(post), method: :delete %></div>
+  <% end %>
+</div>

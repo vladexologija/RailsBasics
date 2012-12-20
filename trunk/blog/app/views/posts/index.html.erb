@@ -1,7 +1,12 @@
-<% @posts.each do |post| %>
-  <div><%= post.title %></div>
-  <div><%= post.id %></div>
-  <div><%= link_to "Edit", edit_post_path(post) %></div>
-  <div><%= link_to "Delete", post_path(post), method: :delete %></div>
+<% content_for :left do %>
+  <div>Posts actions</div>
+  <li><%= link_to 'Home', :action => 'index' %></li>
 <% end %>
+
+<% content_for :head do %>
+  <%= javascript_include_tag "application" %>
+<% end %>
+
+<%= render @posts %>
+
 <%= link_to "New post", new_post_path %>

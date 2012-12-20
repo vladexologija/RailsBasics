@@ -10,7 +10,14 @@ Blog::Application.routes.draw do
     end
   end
 
-  resources :users
+  #put "/users" => "user#update_all", :as => "users"
+  resources :users do
+    collection do
+      get :edit_all
+      put :update_all
+    end
+  end
+
   resource :about , :controller => "about", :only => [:show]
   # match "post/:id" => "post#show", :as => "show_post", :constraints => proc {|req| req.params[:id] =~ /\d+/}
   # The priority is based upon order of creation:

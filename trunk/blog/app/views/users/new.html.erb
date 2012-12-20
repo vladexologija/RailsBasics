@@ -21,7 +21,10 @@
   <%= f.label :role %>:
   <%= f.text_field :role %> <br/>
 
-  <%= f.check_box :terms_of_service %> <br/>
+  <%= f.fields_for :preferences do |preference| %>
+    Send newsletter <%= preference.check_box :send_newsletter %><br/>
+  <% end %>
+
   <%= f.submit %>
 <% end %>
 

@@ -3,12 +3,22 @@
 <head>
   <title>Blog</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <%= yield :head %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div class="basic">
+    Test
+  </div>
+  <div class"left.sidebar">
+    <% if content_for? :left %>
+      <%= yield :left %>
+    <% else %>
+      <div style="font-weight:bold">No menu</div>
+    <% end %>
+  </div>
+  <div>
+    <%= yield %>
+  </div>
 </body>
 </html>

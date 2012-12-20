@@ -12,6 +12,8 @@ class Post < ActiveRecord::Base
     joins(:comments).where("comments.text IS NOT NULL")
   }
 
+  validates_length_of :description, :minimum => 5
+
   # default_scope :not_empty, where(:date => !nil)
   # before_validation :check_description
   # attr_readonly :social_security_number

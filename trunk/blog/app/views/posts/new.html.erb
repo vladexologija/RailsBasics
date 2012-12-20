@@ -1,13 +1,19 @@
 <%= form_for @post do |f| %>
-  <%= f.label :title %><br/>
+  <%= f.label :title, "Post title" %><br/>
   <%= f.text_field :title %><br/>
+  <!-- <%= text_field :post, :title %> -->
 
-  <%= f.label :description %><br/>
+  <%= f.label :description, "Post description" %><br/>
   <%= f.text_area :description %> <br/>
+
+  <!-- <%= select_date(Time.now + 5.days, :prefix => "anniversary") %> <br/> -->
+  <%= f.date_select :date, :start_year => 1991, :order => [:day, :month, :year] %> <br/>
+
+  <div>
+    You have <%= distance_of_time_in_words(Time.now, Time.now + 5.minute) %> to fill this
+    form...
+  </div>
 
   <%= f.submit %>
 <% end %>
 
-<div id="proba">
-  
-</div>

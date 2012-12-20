@@ -1,6 +1,33 @@
 <h1>Editing user</h1>
 
-<%= render 'form' %>
+<% if @user.errors.any? %>
+  <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <%= f.label :username %>:
+  <%= f.text_field :username %> <br/>
+
+  <%= f.label :password %>:
+  <%= f.password_field :password %> <br/>
+
+  <%= f.label :password_confirmation %>:
+  <%= f.password_field :password_confirmation %> <br/>
+
+  <%= f.label :role %>:
+  <%= f.text_field :role %> <br/>
+
+  <%= f.fields_for :posts do |post| %>
+    <%= post.text_field :title %><br/>
+    <%= post.text_area :description %> <br/>
+  <% end %>
+
+  <%= f.submit %>
+<% end %>
 
 <%= link_to 'Show', @user %> |
 <%= link_to 'Back', users_path %>
