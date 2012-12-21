@@ -21,6 +21,8 @@
   <%= f.label :role %>:
   <%= f.text_field :role %> <br/>
 
+  <%= f.select("id", Post.all.collect { |p| [p.title, p.id]}) %>
+
   <%= f.fields_for :posts do |post| %>
     <%= post.text_field :title %><br/>
     <%= post.text_area :description %> <br/>

@@ -1,4 +1,4 @@
-<h1>New user</h1>
+<%= page_title("New user") %>
 
 <% if @user.errors.any? %>
   <ul>
@@ -10,7 +10,7 @@
 
 <%= form_for(@user) do |f| %>
   <%= f.label :username %>:
-  <%= f.text_field :username %> <br/>
+  <%= f.email_field :username %> <br/>
 
   <%= f.label :password %>:
   <%= f.password_field :password %> <br/>
@@ -18,14 +18,20 @@
   <%= f.label :password_confirmation %>:
   <%= f.password_field :password_confirmation %> <br/>
 
-  <%= f.label :role %>:
-  <%= f.text_field :role %> <br/>
+  <%= f.label :role %> <br/>
+  <%= f.label :user_role_admin %>
+  <%= f.radio_button :role, "admin" %><br/>
+  <%= f.label :user_role_user %>
+  <%= f.radio_button :role, "user" %><br/>
 
   <%= f.fields_for :preferences do |preference| %>
     Send newsletter <%= preference.check_box :send_newsletter %><br/>
   <% end %>
 
   <%= f.submit %>
+  <%= button_to "Delete", users_path(@user) %>
 <% end %>
+
+<%= current_page?(:action => "new") %>
 
 <%= link_to 'Back', users_path %>
