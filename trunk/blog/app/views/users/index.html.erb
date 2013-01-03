@@ -4,23 +4,10 @@
 <% end %>
 
 <h1>Listing users</h1>
-
-<table>
-  <tr>
-    <th>Username</th>
-    <th>Password</th>
-    <th>Preferences</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <%= user_actions(user) %>
-<% end %>
-</table>
+<div id="user_actions">
+  <%= render "user_actions", :users => @users %>
+</div>
 
 
-<br />
-
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New User', new_user_path %> </br>
+<%= link_to "Upsate user preferences", update_preferences_users_path , :remote => true, "data-type" => :html, :id => "update_preferences"%>

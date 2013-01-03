@@ -16,3 +16,8 @@
     height: 50px;
     color:#FFFFFF;
  }
+
+ #user_nav {
+    float: right;
+    font-size: 12px;
+ }

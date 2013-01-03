@@ -2,6 +2,9 @@ Blog::Application.routes.draw do
 
   root :to => "posts#index"
 
+  get "/user_sessions/new" => "user_sessions#new", :as => "login"
+  get "/user_sessions/destroy" => "user_sessions#destroy", :as => "logout"
+
   resources :posts do
     resources :comments do
       collection do
@@ -15,8 +18,11 @@ Blog::Application.routes.draw do
     collection do
       get :edit_all
       put :update_all
+      get :update_preferences
     end
   end
+
+  resources :user_sessions
 
   resource :about , :controller => "about", :only => [:show]
   # match "post/:id" => "post#show", :as => "show_post", :constraints => proc {|req| req.params[:id] =~ /\d+/}

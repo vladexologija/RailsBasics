@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213143418) do
+ActiveRecord::Schema.define(:version => 20121231121339) do
 
   create_table "comments", :force => true do |t|
     t.integer  "post_id"
@@ -35,12 +35,26 @@ ActiveRecord::Schema.define(:version => 20121213143418) do
 
   add_index "posts", ["user_id"], :name => "index_posts_on_user_id"
 
-  create_table "users", :force => true do |t|
+  create_table "user_sessions", :force => true do |t|
     t.string   "username"
     t.string   "password"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "username"
     t.text     "preferences"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+    t.string   "email"
+    t.string   "crypted_password"
+    t.string   "password_salt"
+    t.string   "persistence_token",  :default => "", :null => false
+    t.integer  "login_count",        :default => 0,  :null => false
+    t.integer  "failed_login_count", :default => 0,  :null => false
+    t.datetime "last_login_at"
+    t.string   "last_login_ip"
   end
 
 end
