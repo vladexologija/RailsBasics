@@ -3,10 +3,9 @@
   <li><%= link_to 'Home', :action => 'index' %></li>
 <% end %>
 
-<% content_for :head do %>
 
+<% cache do %>
+  <%= render @posts %>
 <% end %>
-
-<%= render @posts %>
 
 <%= link_to "New post", new_post_path %>

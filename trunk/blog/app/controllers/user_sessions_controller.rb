@@ -1,6 +1,7 @@
 class UserSessionsController < ApplicationController
-
   before_filter :authenticate, :only => :destroy
+
+  caches_page :new
 
   def new
     @user_session = UserSession.new
