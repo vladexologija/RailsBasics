@@ -5,6 +5,8 @@ Blog::Application.routes.draw do
   get "/user_sessions/new" => "user_sessions#new", :as => "login"
   get "/user_sessions/destroy" => "user_sessions#destroy", :as => "logout"
 
+  get "posts/page/:page" => "posts#index"
+
   resources :posts do
     resources :comments do
       collection do

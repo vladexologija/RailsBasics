@@ -1,13 +1,15 @@
 class PostsController < ApplicationController
   before_filter :params_check
 
+  caches_page :index, :show
+  cache_sweeper :post_sweeper
+
   def index
     @posts = Post.all
     # puts @posts.first.attributes
     # @posts = Post.where(:id => [1,2], :title => "Title")
     # @posts = Post.where("submited = ?", true)
     # @posts = Post.older_than(Date.today).empty
-
   end
 
   def show
@@ -48,7 +50,8 @@ class PostsController < ApplicationController
   def update
     #Post.update(params[:id],params[:post])
     post = Post.find(params[:id])
-    if (post.exists? && post.update_attributes(params[:post]))
+    if (post.update_attributes(params[:post]))
+      flash[:notice] = "Sucess"
       redirect_to post_path(post)
     else
       render :edit
