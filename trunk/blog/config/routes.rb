@@ -15,6 +15,10 @@ Blog::Application.routes.draw do
     end
   end
 
+  #resources :comments
+  get "/comments" => "comments#index", :as => "comments"
+  post "/comments" => "comments#create", :as => "comments"
+
   #put "/users" => "user#update_all", :as => "users"
   resources :users do
     collection do

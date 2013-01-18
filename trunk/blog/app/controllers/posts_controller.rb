@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
   before_filter :params_check
 
-  caches_page :index, :show
+  caches_page :index
   cache_sweeper :post_sweeper
 
   def index
     @posts = Post.all
+    sleep 2
     # puts @posts.first.attributes
     # @posts = Post.where(:id => [1,2], :title => "Title")
     # @posts = Post.where("submited = ?", true)
@@ -14,6 +15,8 @@ class PostsController < ApplicationController
 
   def show
      @post = Post.find(params[:id])
+     @comment = Comment.new(post_id: @post.id)
+     @recent_posts = Post.order("created_at desc")
   end
 
   def edit

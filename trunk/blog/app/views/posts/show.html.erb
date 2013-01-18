@@ -1,3 +1,39 @@
 <%= flash[:notice] %> </br>
-<%= @post.description %>
-<%= link_to "Postovi", posts_path %> </br>
+
+<% cache "recent_posts" do %>
+<div id="recent_posts">
+  <h3>Recent Posts</h3>
+  <ul>
+  <% @recent_posts.each do |post| %>
+    <% cache ["recent", post] %>
+      <li><%= link_to post.title, post %></li>
+    <% end %>
+  <% end %>
+  </ul>
+</div>
+<% end %>
+
+<% cache @post do %>
+
+<h1>
+  <%= @post.title %>
+</h1>
+
+<div>
+  <%= @post.description %>
+</div>
+
+<%= link_to "Edit Post", edit_post_path(@post) %>|<%= link_to "Browse Posts", posts_path %>
+</br>
+
+<h2>
+  <%= pluralize(@post.comments.size, "comment") %>
+  <div class="comments">
+    <%= render @post.comments %>
+  </div>
+  <div>
+     <%= render "comments/form" %>
+  </div>
+</h2>
+
+<% end %>

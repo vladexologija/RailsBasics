@@ -21,3 +21,15 @@
     float: right;
     font-size: 12px;
  }
+
+ .content {
+    padding: 20px;
+ }
+
+ .comments {
+  background: #C1EBFF;
+ }
+
+ #recent_posts {
+  float: right;
+ }
