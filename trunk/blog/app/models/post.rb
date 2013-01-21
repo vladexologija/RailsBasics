@@ -17,13 +17,16 @@ class Post < ActiveRecord::Base
   # default_scope :not_empty, where(:date => !nil)
   # before_validation :check_description
   # attr_readonly :social_security_number
-
   def description
     read_attribute(:description) || "n/a"
   end
 
   def check_date
     self.date ||= Date.today
+  end
+
+  def older?(date)
+    check_date < date
   end
 
   # set_table_name to use different table name than default - plural of model
@@ -35,5 +38,6 @@ class Post < ActiveRecord::Base
   # def check_description
   #  self[:description] = description_before_type_cast.gsub(/fuck/i,"*")
   # end
+
 
 end
