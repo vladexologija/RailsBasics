@@ -1,34 +1,49 @@
 require File.dirname(__FILE__) + '/../spec_helper'
 
+# creates instance of Behaviour
 describe Post do
-  let(:post) { Factory(:timesheet) }
+  let(:post) { Post.new }
 
+  # better to use subject
+  subject { Post.new }
 
+  before do
+    #TODO
+  end
+
+  it { should_not be_persisted }
+  it { should_not be_older(Date.today) }
+  its(:date) {should be_nil}
+
+  specify { post.should_not be_persisted }
+
+  it "should include 1" do
+    [1,2,3].should include(1)
+  end
+
+  # returns instance of Example
   it "description should be 'n/a' if not available" do
     post.description.should == "n/a"
   end
 
-  it "description should return something when available" do
-    post.description.should == "something"
+  it "date should be nil" do
+    post.date.should be_nil
   end
 
-  describe "validation of description worked" do
-    it "fails if description is shorter than 5 characters" do
-      post.description = "two"
-      post.should have(1).error_on(:description)
-    end
-
-    it "passes with longer description" do
-      post.description = "description"
-      post.should have(0).error_on(:description)
-    end
+  it "should have same time" do
+    date = Date.new
+    date.should be_same_time(Date.new)
   end
 
-  context "when submited" do
-
-    it "updates the time" do
-      post.created_at.should_not be_nil
-      post.submit
-    end
+  it "should be published" do
+    expect {
+      post.title = "sfdfdf"
+    }.to change { post.title }.from(nil).to("sfdfdf")
   end
+
+  after do
+    #TODO
+  end
+
 end
+
