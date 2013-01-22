@@ -8,12 +8,12 @@ describe Post do
   subject { Post.new }
 
   before do
-    #TODO
+
   end
 
   it { should_not be_persisted }
   it { should_not be_older(Date.today) }
-  its(:date) {should be_nil}
+  its(:date) { should be_nil }
 
   specify { post.should_not be_persisted }
 
@@ -33,6 +33,14 @@ describe Post do
   it "should have same time" do
     date = Date.new
     date.should be_same_time(Date.new)
+  end
+
+  it "should be able to use partial stubs" do
+    test = mock("test")
+    tester = stub("tester", :testable? => true)
+    # tester.should be_testable
+    post.stub(:ready?).and_return(true)
+    post.should be_ready
   end
 
   it "should be published" do

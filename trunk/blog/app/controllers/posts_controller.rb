@@ -37,13 +37,14 @@ class PostsController < ApplicationController
     @post = Post.new(params[:post])
     # post.persisted?
     # post.new_record?
-    puts @post.new_record?
+    # puts @post.new_record?
     # post.save! raises exception
     if @post.save
     # redirect_to :action => "index"
     # puts "URL FOR: #{url_for(post)}"
     # redirect_to post
       puts @post.persisted?
+      flash[:notice] = "The post was saved successfully."
       redirect_to posts_path
     else
       render :new
