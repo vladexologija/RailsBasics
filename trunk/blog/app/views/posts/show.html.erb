@@ -1,16 +1,16 @@
 <%= flash[:notice] %> </br>
 
 <% cache "recent_posts" do %>
-<div id="recent_posts">
-  <h3>Recent Posts</h3>
-  <ul>
-  <% @recent_posts.each do |post| %>
-    <% cache ["recent", post] %>
-      <li><%= link_to post.title, post %></li>
-    <% end %>
-  <% end %>
-  </ul>
-</div>
+  <div id="recent_posts">
+    <h3>Recent Posts</h3>
+    <ul>
+      <% @recent_posts.each do |post| %>
+        <li>
+            <%= link_to post.title, post %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
 <% end %>
 
 <% cache @post do %>

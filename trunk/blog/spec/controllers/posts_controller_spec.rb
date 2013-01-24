@@ -14,12 +14,12 @@ describe PostsController do
       post :create, :post => { "title" => "Title", "description" => "Description" }
     end
 
-    it "saves the post" do
-      post_obj.should_receive(:save)
-      post :create
-    end
 
     context "when the post saves successfully" do
+
+      before do
+        post_obj.stub(:save).and_return(true)
+      end
 
       it "sets a flash[:notice] message" do
         post :create
@@ -35,8 +35,19 @@ describe PostsController do
 
     context "when the post fails to save" do
 
-      it "description" do
-        pending("jebiga")
+      before do
+        post_obj.stub(:save).and_return(false)
+      end
+
+      it "assigns @post" do
+        post :create
+        # returns hash representing instance variables
+        assigns(:post).should eq(post_obj)
+      end
+
+      it "renders the new template" do
+        post :create
+        response.should render_template("new")
       end
 
     end

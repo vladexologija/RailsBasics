@@ -48,5 +48,9 @@ group :development, :development_with_caching do
   gem 'sextant'
 end
 
+group :test do
+  gem "webrat"
+end
+
 gem 'authlogic'
 
